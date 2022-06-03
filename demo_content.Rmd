@@ -1,0 +1,183 @@
+---
+title: "Demo Content"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(connectwidgets)
+library(dplyr)
+library(magrittr)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+client <- connect(
+  server  = Sys.getenv("CONNECT_SERVER"),
+  api_key = Sys.getenv("CONNECT_API_KEY")
+  )
+
+all_content <- client %>%
+  content() %>%
+  arrange(desc(updated_time))
+```
+
+
+## R
+
+### Shiny App
+```{r shiny}
+all_content %>%
+  filter(title == "Demo Shiny Penguins") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/SamEdwardes/demo-shiny-penguins)
+
+### RMarkdown
+```{r rrmarkdown}
+all_content %>%
+  filter(title == "Demo rmd Penguins") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/SamEdwardes/demo-rmd-penguins)
+
+### Plumber API
+```{r plumber}
+all_content %>%
+  filter(title == "Demo - Palmer Penguins - Plumber API") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/SamEdwardes/demo-plumber-penguins)
+
+### Pins
+
+A demo of using pins with RStudio pro products.
+```{r pins}
+all_content %>%
+  filter(guid == "a84b4b78-537f-42a3-827c-7b377ee656d7") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/SamEdwardes/demo-pins-r-penguins/blob/main/app/report.Rmd)
+
+---
+
+## Python
+
+### Jupyter Notebook
+
+Jupyter notebook with interactive visualizations
+```{r jupyter}
+all_content %>%
+  filter(title == "Jupyter Interactive Visualization") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/python-examples/tree/main/jupyter-interactive-visualization)
+
+### Flask API
+
+Model trained in spaCy via a Flask API
+```{r flask}
+all_content %>%
+  filter(title == "Flask Sentiment Analysis API") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/python-examples/tree/main/flask-sentiment-analysis-api)
+
+
+### Fast API
+
+Fast API demo based on stock data
+```{r fast}
+all_content %>%
+  filter(title == "Fast API Demo") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/python-examples/tree/main/fastapi-stock)
+
+
+### Dash App
+
+Dash Demo App
+```{r dash}
+all_content %>%
+  filter(title == "Dash Demo App") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/python-examples/tree/main/dash-app)
+
+
+### Streamlit App
+
+Streamlit Demo showing income share
+```{r streamlit}
+all_content %>%
+  filter(title == "Streamlit Demo Income Share") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/python-examples/tree/main/streamlit-income-share)
+
+### R Markdown with Python
+
+Integration of Python into R projects with reticulate
+```{r rmarkdownpython}
+all_content %>%
+  filter(title == "R Markdown with Python") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/python-examples/blob/main/rmarkdown-notebook/rmarkdown-notebook.Rmd)
+
+
+---
+
+## Bike Predict (R)
+
+### Predict Shiny App
+```{r bikepredict}
+all_content %>%
+  filter(title == "Bike Predict - App - Client App") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/python-examples/tree/main/jupyter-interactive-visualization)
+
+### Web Data to Pins & Database
+```{r webtopins}
+all_content %>%
+  filter(title == "Bike Predict - ETL Step 1 - Raw Data Refresh") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/bike_predict/blob/main/content/01-etl/01-raw-data-refresh/document.qmd)
+
+### Train and Deploy Model (vetiver, pins, plumber, connect)
+```{r deploy}
+all_content %>%
+  filter(title == "Bike Predict - Model Step 1 - Train and Deploy") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/bike_predict/blob/main/content/02-model/01-train-and-deploy-model/document.qmd)
+
+### Model Monitoring and Accuracy (vetiver, pins, plumber, connect)
+```{r metrics}
+all_content %>%
+  filter(title == "Bike Predict - Model Step 2 - Metrics") %>%
+  slice(1) %>%
+  rsc_card()
+```
+[Code URL](https://github.com/sol-eng/bike_predict/blob/main/content/02-model/02-model-metrics/document.qmd)
+
+
+
+
+[Source code](https://github.com/sol-eng/bike_predict/blob/main/content/02-model/02-model-metrics/document.qmd) to this connectwidget dashboard.
+
+
